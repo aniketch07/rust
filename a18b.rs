@@ -1,3 +1,4 @@
+#[derive(PartialEq)]
     enum Position{
         Maintainance,
         Marketing,
@@ -6,6 +7,7 @@
         Kitchenstaff,
         Assemblytech
     }
+    #[derive(PartialEq)]
 
     enum Status{
         Terminated,
@@ -19,15 +21,24 @@
 
     
     fn try_access(employee: &Employee) -> Result<(), String> {
-        match employee.status {
-            Status::Terminated => Err("Terminated".to_string()),
-            _ => Ok(()),
-        }
+       if employee.status==Status::Terminated{
+            Err(String::from("Terminated"))
+       }
+       else{
+        Ok(())
+       }
+
+       if employee.position == Position::Maintainance{
+        Ok(())
+       }
+       else{
+        Err("invalid position".to_string())
+       }
     
-        match employee.position {
-            Position::Maintainance => Ok(()),
-            _ => Err("invalid position".to_string()),
-        }
+        // match employee.position {
+        //     Position::Maintainance => Ok(()),
+        //     _ => Err("invalid position".to_string()),
+        // }
     }
     
     fn print_access(employee: &Employee) -> Result<(), String> {
