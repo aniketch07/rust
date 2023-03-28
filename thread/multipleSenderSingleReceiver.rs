@@ -35,7 +35,7 @@
 
 // }
 
-// sending data from multiple thread to a single thread using cloned thread
+//sending data from multiple thread to a single thread using cloned thread
 use std::thread;
 use std::sync::mpsc;
 
@@ -91,3 +91,7 @@ fn main() {
     thread3.join().unwrap();
     receiverThread.join().unwrap();
 }
+
+
+ 
+// thread ->thread2->main 
